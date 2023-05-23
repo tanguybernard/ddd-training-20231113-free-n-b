@@ -4,7 +4,7 @@ import com.zenika.training.shared.ValueObjectId;
 
 public class InterventionId extends ValueObjectId<String> {
 
-    protected InterventionId(String id) {
+    public InterventionId(String id) {
         super(id);
     }
 

@@ -6,7 +6,7 @@ import com.zenika.training.shared.AggregateRoot;
 public class Intervention extends AggregateRoot<InterventionId>{
 
     public Client client;
-    private TechnicienId technicienId;
+    public TechnicienId technicienId;
 
 
 

@@ -2,22 +2,30 @@ package com.zenika.training.bc_intervention;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.zenika.training.bc_intervention.application.CreateIntervention;
+import com.zenika.training.bc_intervention.application.CreateInterventionDto;
+import com.zenika.training.bc_intervention.domain.intervention.InterventionRepository;
+import com.zenika.training.bc_intervention.domain.intervention.exceptions.PostalCodeException;
 import com.zenika.training.bc_intervention.domain.intervention.models.Address;
 import com.zenika.training.bc_intervention.domain.intervention.models.Client;
 import com.zenika.training.bc_intervention.domain.intervention.models.ClientId;
 import com.zenika.training.bc_intervention.domain.intervention.models.Intervention;
 import com.zenika.training.bc_intervention.domain.intervention.models.PostalCode;
 import com.zenika.training.bc_intervention.domain.technicien.models.TechnicienId;
+import com.zenika.training.bc_intervention.infrastructure.stubs.InMemoryInterventionRepository;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import groovy.cli.CliBuilderException;
-
+@SpringBootTest
 public class CreateInterventionTest {
 
+    @Autowired
+    InterventionRepository interventionRepository;
 
     @Test
-    void createIntervention(){
+    public void createIntervention() throws PostalCodeException{
        //GIVEN
 
        ClientId clientId = new ClientId("abc");
@@ -28,18 +36,31 @@ public class CreateInterventionTest {
        
        TechnicienId techId = new TechnicienId("techId");
 
+       //InterventionRepository interventionRepository = new InMemoryInterventionRepository();
+
+
+
        
        //WHEN
 
-       CreateIntervention useCase = new CreateIntervention();
+       CreateIntervention useCase = new CreateIntervention(interventionRepository);
 
-       Intervention intervention = useCase.execute();
 
+       CreateInterventionDto dto = new CreateInterventionDto(
+        "techId", 
+        "abc", 
+        "toto", 
+        "paris", 
+        "75000");
+
+       Intervention intervention = useCase.execute(dto);
+
+
+       Intervention interventionSaved =
+        interventionRepository.getInterventionBy(intervention.getId());
     
        //THEN
-
-
-       assertEquals(intervention.client.getId(), client.getId());
+       assertEquals(interventionSaved.client.getId(), client.getId());
 
 
     }

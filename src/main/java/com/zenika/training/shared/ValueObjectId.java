@@ -2,7 +2,7 @@ package com.zenika.training.shared;
 
 public class ValueObjectId<T> {
 
-    private T id;
+    public T id;
 
     protected ValueObjectId(T id) {
 
