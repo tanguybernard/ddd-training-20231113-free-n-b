@@ -1,7 +1,8 @@
-package com.zenika.training.bc_intervention.application;
+package com.zenika.training.bc_intervention.application.services;
 
 import java.util.UUID;
 
+import com.zenika.training.bc_intervention.application.CreateInterventionDto;
 import com.zenika.training.bc_intervention.domain.intervention.InterventionRepository;
 import com.zenika.training.bc_intervention.domain.intervention.exceptions.PostalCodeException;
 import com.zenika.training.bc_intervention.domain.intervention.models.Address;

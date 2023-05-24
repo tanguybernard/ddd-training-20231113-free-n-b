@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.zenika.training.bc_intervention.application.CreateIntervention;
 import com.zenika.training.bc_intervention.application.CreateInterventionDto;
+import com.zenika.training.bc_intervention.application.services.CreateIntervention;
 import com.zenika.training.bc_intervention.domain.intervention.InterventionRepository;
 import com.zenika.training.bc_intervention.domain.intervention.exceptions.PostalCodeException;
 import com.zenika.training.bc_intervention.domain.intervention.models.Address;
