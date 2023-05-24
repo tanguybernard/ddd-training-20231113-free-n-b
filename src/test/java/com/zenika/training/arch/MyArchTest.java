@@ -6,7 +6,7 @@ import com.tngtech.archunit.lang.ArchRule;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
-@AnalyzeClasses(packages = "com.zenika.training.my_bc")
+@AnalyzeClasses(packages = "com.zenika.training.bc_intervention")
 public class MyArchTest {
 
     @ArchTest
@@ -19,6 +19,6 @@ public class MyArchTest {
 
     @ArchTest
     public static final ArchRule class_domain_independant_presentation =noClasses().that().resideInAPackage("..domain..")
-            .should().dependOnClassesThat().resideInAPackage("..presentation..");
+            .should().dependOnClassesThat().resideInAPackage("..api..");
 
 }

@@ -3,7 +3,8 @@ package com.zenika.training.bc_intervention.domain.intervention.models;
 import com.zenika.training.bc_intervention.domain.intervention.events.PtoFilledDomainEvent;
 import com.zenika.training.bc_intervention.domain.technicien.models.TechnicienId;
 import com.zenika.training.shared.AggregateRoot;
-import com.zenika.training.shared.domain_event.DomainEvent;
+
+//import library_shared_bc_preparation.PtoNumber;
 
 public class Intervention extends AggregateRoot<InterventionId>{
 
@@ -19,6 +20,7 @@ public class Intervention extends AggregateRoot<InterventionId>{
     }
 
     static Intervention create(InterventionId id, Client client , TechnicienId technicienId) {
+
 
         return new Intervention(id, client, technicienId);
     }

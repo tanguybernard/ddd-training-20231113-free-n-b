@@ -19,7 +19,8 @@ public class PgInterventionRepository implements InterventionRepository {
 
     @Override
     public void saveIntervention(Intervention intervention) {
-        this.interventionDao.save(mapper.fromDomain(intervention));
+        InterventionEntity e = this.interventionDao.save(mapper.fromDomain(intervention));
+
     }
 
     @Override
